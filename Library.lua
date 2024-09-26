@@ -3183,7 +3183,7 @@ end;
 function Library:Notify(Text, Time, SoundId)
     local Side = string.lower(Library.NotifySide);
 
-    if Side == "Right" then
+    if Side == "right" then
         Library:RightNotify(Text, Time, SoundId);
     else
         Library:LeftNotify(Text, Time, SoundId);
