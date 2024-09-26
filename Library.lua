@@ -3200,7 +3200,7 @@ function Library:LeftNotify(Text, Time, SoundId)
         Size = UDim2.new(0, 0, 0, YSize);
         ClipsDescendants = true;
         ZIndex = 100;
-        Parent = Library.NotificationArea;
+        Parent = Library.LeftNotificationArea;
     });
 
     local NotifyInner = Library:Create('Frame', {
@@ -3303,7 +3303,7 @@ function Library:RightNotify(Text, Time, SoundId)
         Size = UDim2.new(0, 0, 0, YSize);
         ClipsDescendants = true;
         ZIndex = 100;
-        Parent = Library.NotificationArea;
+        Parent = Library.RightNotificationArea;
     });
 
     local NotifyInner = Library:Create('Frame', {
