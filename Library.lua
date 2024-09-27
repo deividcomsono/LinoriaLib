@@ -10,14 +10,16 @@ local RenderStepped = RunService.RenderStepped;
 local LocalPlayer = Players.LocalPlayer;
 local Mouse = LocalPlayer:GetMouse();
 
-local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
+local DrawingLib = typeof(Drawing) == "table" and Drawing or false;
+local ProtectGui = protectgui or (function() end);
 local GetHUI = gethui or (function() return CoreGui end);
 
 local ScreenGui = Instance.new('ScreenGui');
-ProtectGui(ScreenGui);
+pcall(ProtectGui, ScreenGui);
 
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
-ScreenGui.Parent = GetHUI();
+local Parented = pcall(function() ScreenGui.Parent = GetHUI(); end);
+if not Parented then ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui", 9e9) end;
 
 local Toggles = {};
 local Options = {};
@@ -4083,12 +4085,12 @@ function Library:CreateWindow(...)
             -- A bit scuffed, but if we're going from not toggled -> toggled we want to show the frame immediately so that the fade is visible.
             Outer.Visible = true;
 
-            if Library.ShowCustomCursor and Drawing then
-                local Cursor = Drawing.new("Triangle")
+            if Library.ShowCustomCursor and DrawingLib then
+                local Cursor = DrawingLib.new("Triangle")
                 Cursor.Thickness = 1
                 Cursor.Filled = true
                 Cursor.Visible = true
-                local CursorOutline = Drawing.new("Triangle")
+                local CursorOutline = DrawingLib.new("Triangle")
                 CursorOutline.Thickness = 1
                 CursorOutline.Filled = false
                 CursorOutline.Color = Color3.new(0, 0, 0)
