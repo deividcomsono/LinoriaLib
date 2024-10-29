@@ -99,7 +99,7 @@ local SaveManager = {} do
 			self.Folder .. '/settings'
 		}
 		
-		if self.SubFolder ~= "" then 
+		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
 		    table.insert(paths, self.Folder .. "/settings/" .. self.SubFolder);
 		end
 		
@@ -147,7 +147,7 @@ local SaveManager = {} do
 		SaveManager:CheckFolderTree()
 		
 		local fullPath = self.Folder .. '/settings/' .. name .. '.json'
-		if self.SubFolder ~= "" then 
+		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
 		    fullPath = self.Folder .. "/settings/" .. self.SubFolder .. "/" .. name .. '.json'
 		end
 		
@@ -184,7 +184,7 @@ local SaveManager = {} do
 		SaveManager:CheckFolderTree()
 		
 		local file = self.Folder .. '/settings/' .. name .. '.json'
-		if self.SubFolder ~= "" then 
+		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
 		    file = self.Folder .. "/settings/" .. self.SubFolder .. "/" .. name .. '.json'
 		end
 		
@@ -208,7 +208,7 @@ local SaveManager = {} do
 		end
 		
 		local file = self.Folder .. '/settings/' .. name .. '.json'
-		if self.SubFolder ~= "" then 
+		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
 		    file = self.Folder .. "/settings/" .. self.SubFolder .. "/" .. name .. '.json'
 		end
 		
@@ -233,7 +233,7 @@ local SaveManager = {} do
 			SaveManager:CheckFolderTree()
 			
 			local list = {}
-	        if self.SubFolder == "" then 
+	        if self.SubFolder == "" or self.SubFolder == nil then 
 	            list = listfiles(self.Folder .. '/settings')
 	        else
 		        list = listfiles(self.Folder .. "/settings/" .. self.SubFolder)
@@ -278,7 +278,7 @@ local SaveManager = {} do
 		SaveManager:CheckFolderTree()
 		
 		local autoLoadPath = self.Folder .. '/settings/autoload.txt'
-		if self.SubFolder ~= "" then 
+		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
 		    autoLoadPath = self.Folder .. "/settings/" .. self.SubFolder .. "/autoload.txt"
 		end
 		
@@ -364,7 +364,7 @@ local SaveManager = {} do
 			local name = getgenv().Linoria.Options.SaveManager_ConfigList.Value
 			
 			local autoLoadPath = self.Folder .. '/settings/autoload.txt'
-    		if self.SubFolder ~= "" then 
+    		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
     		    autoLoadPath = self.Folder .. "/settings/" .. self.SubFolder .. "/autoload.txt"
     		end
 			writefile(autoLoadPath, name)
@@ -374,7 +374,7 @@ local SaveManager = {} do
 		end)
 		section:AddButton('Reset autoload', function()
 		    local autoLoadPath = self.Folder .. '/settings/autoload.txt'
-    		if self.SubFolder ~= "" then 
+    		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
     		    autoLoadPath = self.Folder .. "/settings/" .. self.SubFolder .. "/autoload.txt"
     		end
     		
@@ -391,7 +391,7 @@ local SaveManager = {} do
         
         do
             local autoLoadPath = self.Folder .. '/settings/autoload.txt'
-    		if self.SubFolder ~= "" then 
+    		if self.SubFolder ~= "" and self.SubFolder ~= nil then 
     		    autoLoadPath = self.Folder .. "/settings/" .. self.SubFolder .. "/autoload.txt"
     		end
     		
